@@ -2,10 +2,12 @@
 import streamlit as st
 import pandas as pd
 import random
+from pathlib import Path
 
 # Load dataset
-df = pd.read_csv("nutrify_expanded_dataset.csv")
-
+APP_DIR = Path(__file__).resolve().parent
+DATA_PATH = APP_DIR.parent / "nutrify_expanded_dataset.csv"
+df = pd.read_csv(DATA_PATH)
 # Page setup
 st.set_page_config(page_title="Nutrify - Personalized Diet Planner")
 st.title("🌱 Nutrify - Your Personalized Diet Planner")
