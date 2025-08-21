@@ -1,8 +1,10 @@
 import streamlit as st
 import base64
+from pathlib import Path
 
 # ---------- Set Background Image ----------
 def set_background(image_file):
+    img_path = Path(__file__).parent / "images" / image_file
     with open(image_file, "rb") as f:
         data = f.read()
         encoded = base64.b64encode(data).decode()
@@ -24,7 +26,7 @@ def set_background(image_file):
     """
     st.markdown(page_bg_img, unsafe_allow_html=True)
 
-set_background("images/nutrition.jpg")
+set_background("nutrition.jpg")
 
 # ---------- Animated Headings ----------
 st.markdown("""
@@ -93,4 +95,5 @@ with col2:
     if st.button("🚀 Proceed"):
         st.session_state['show_welcome'] = True
         st.rerun()
+
 
