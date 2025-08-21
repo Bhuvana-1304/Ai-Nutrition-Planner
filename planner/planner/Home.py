@@ -4,8 +4,8 @@ from pathlib import Path
 
 # ---------- Set Background Image ----------
 def set_background(image_file):
-    img_path = Path(__file__).parent / "images" / image_file
-    with open(image_file, "rb") as f:
+    img_path = Path(__file__).parent / "images" / image_file 
+    with open(img_path, "rb") as f: 
         data = f.read()
         encoded = base64.b64encode(data).decode()
     page_bg_img = f"""
@@ -26,6 +26,7 @@ def set_background(image_file):
     """
     st.markdown(page_bg_img, unsafe_allow_html=True)
 
+# Call function with image
 set_background("nutrition.jpg")
 
 # ---------- Animated Headings ----------
@@ -95,5 +96,3 @@ with col2:
     if st.button("🚀 Proceed"):
         st.session_state['show_welcome'] = True
         st.rerun()
-
-
